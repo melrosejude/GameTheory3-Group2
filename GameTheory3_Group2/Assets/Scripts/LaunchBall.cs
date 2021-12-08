@@ -21,6 +21,7 @@ public class LaunchBall : MonoBehaviour
     float time = 0f;
     bool forceSet;
     bool angleSet;
+    bool launched;
 
     
     // Update is called once per frame
@@ -33,9 +34,10 @@ public class LaunchBall : MonoBehaviour
 
     public void LaunchTheObject()
     {
-        if (Input.GetButtonDown("Space") && forceSet && angleSet)
+        if (Input.GetButtonDown("Space") && forceSet && angleSet && !launched)
         {
             myRb.AddForce(angle * transform.right * launchForce, ForceMode2D.Impulse);
+            launched = true;
             Debug.Log("Space pressed");
         }
         
