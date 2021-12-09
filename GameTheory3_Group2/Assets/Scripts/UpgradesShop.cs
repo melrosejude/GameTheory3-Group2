@@ -10,10 +10,6 @@ public class UpgradesShop : MonoBehaviour
     public LaunchBall lbScript;
     public PointsManager pmScript;
 
-    public Button launchPowerButton;
-    public TextMeshProUGUI launchPowerCostText;
-    public int launchPowerCost;
-
     public void Relaunch()
     {
         lbScript.forceSet = false;
@@ -32,6 +28,7 @@ public class UpgradesShop : MonoBehaviour
     public void UpdateAllButtons()
     {
         UpdateButton(launchPowerButton, launchPowerCostText, launchPowerCost);
+        UpdateButton(moneyMultiplierButton, moneyMultiplierCostText, moneyMultiplierCost);
     }
 
     private void UpdateButton(Button button, TextMeshProUGUI text, int cost)
@@ -47,12 +44,29 @@ public class UpgradesShop : MonoBehaviour
         }
     }
 
+    //Upgrade Launch Power
+    public Button launchPowerButton;
+    public TextMeshProUGUI launchPowerCostText;
+    public int launchPowerCost;
     public void UpgradeLaunchPower()
     {
         lbScript.maxForce *= 1.1f;
         pmScript.money -= launchPowerCost;
         launchPowerCost += launchPowerCost;
         UpdateButton(launchPowerButton, launchPowerCostText, launchPowerCost);
+        pmScript.UpdateMoneyDisplay();
+    }
+
+    //Upgrade Money Multiplier
+    public Button moneyMultiplierButton;
+    public TextMeshProUGUI moneyMultiplierCostText;
+    public int moneyMultiplierCost;
+    public void UpgradeMoneyMultiplier()
+    {
+        pmScript.moneyMultiplier += 0.05f;
+        pmScript.money -= moneyMultiplierCost;
+        moneyMultiplierCost += moneyMultiplierCost;
+        UpdateButton(moneyMultiplierButton, moneyMultiplierCostText, moneyMultiplierCost);
         pmScript.UpdateMoneyDisplay();
     }
 }
