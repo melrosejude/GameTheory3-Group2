@@ -19,9 +19,10 @@ public class LaunchBall : MonoBehaviour
     public float maxAngle;
     float launchAngle;
     float time = 0f;
-    bool forceSet;
-    bool angleSet;
-    bool launched;
+    public bool forceSet;
+    public bool angleSet;
+    public bool launched;
+
 
     
     // Update is called once per frame
