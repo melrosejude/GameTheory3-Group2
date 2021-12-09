@@ -13,7 +13,7 @@ public class PointsManager : MonoBehaviour
     public TextMeshProUGUI availableMoneyText;
     public UpgradesShop upgradeScript;
     public LaunchBall lbScript;
-    private bool addedPoints = false;
+    public bool addedPoints = false;
 
     private float _distanceTraveled;
 
@@ -23,7 +23,7 @@ public class PointsManager : MonoBehaviour
         if(gameObject.GetComponent<Rigidbody2D>().IsSleeping() && addedPoints == false && lbScript.launched == true)
         {
             addedPoints = true;
-            money += Mathf.RoundToInt(_distanceTraveled)/100;
+            money += Mathf.RoundToInt(_distanceTraveled/10);
             upgradesPanel.SetActive(true);
             UpdateMoneyDisplay();
             upgradeScript.UpdateAllButtons();

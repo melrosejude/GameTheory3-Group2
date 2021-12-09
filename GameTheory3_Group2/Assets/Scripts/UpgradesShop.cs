@@ -19,6 +19,8 @@ public class UpgradesShop : MonoBehaviour
         lbScript.forceSet = false;
         lbScript.angleSet = false;
         lbScript.launched = false;
+        pmScript.addedPoints = false;
+        gameObject.transform.rotation = Quaternion.identity;
         gameObject.transform.position = startingPosition.position;
     }
     
@@ -48,6 +50,7 @@ public class UpgradesShop : MonoBehaviour
     public void UpgradeLaunchPower()
     {
         lbScript.maxForce *= 1.1f;
+        pmScript.money -= launchPowerCost;
         launchPowerCost += launchPowerCost;
         UpdateButton(launchPowerButton, launchPowerCostText, launchPowerCost);
         pmScript.UpdateMoneyDisplay();
