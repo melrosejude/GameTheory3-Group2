@@ -51,13 +51,19 @@ public class PointsManager : MonoBehaviour
         addedPoints = true;
         moneyEarnedPanel.SetActive(true);
 
-        moneyEarned = Mathf.RoundToInt(_distanceTraveled / 10);
-        distanceTraveledMoneyEarnedText.text = moneyEarned.ToString();
+        //add earned money
+        moneyEarned = _distanceTraveled / 10;
+        //show earned money on screen
+        distanceTraveledMoneyEarnedText.text = System.Math.Round(moneyEarned, 1).ToString();
+        //show bonus
         moneyMultiplierText.text = moneyMultiplier.ToString();
+        //multiply earned money by bonus
         moneyEarned *= moneyMultiplier;
-        Mathf.RoundToInt(moneyEarned);
-        totalMoney.text = moneyEarned.ToString();
+        //show final money earned
+        totalMoney.text = System.Math.Round(moneyEarned, 1).ToString();
+        //add the money earned to the current owned money
         money += moneyEarned;
+
         UpdateMoneyDisplay();
         upgradeScript.UpdateAllButtons();
     }
