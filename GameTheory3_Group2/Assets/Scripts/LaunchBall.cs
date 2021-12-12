@@ -38,6 +38,7 @@ public class LaunchBall : MonoBehaviour
         if (Input.GetButtonDown("Space") && forceSet && angleSet && !launched)
         {
             myRb.AddForce(angle * transform.right * launchForce, ForceMode2D.Impulse);
+            AudioManager.instance.playCanonFire();
             launched = true;
             Debug.Log("Space pressed");
         }
@@ -83,5 +84,13 @@ public class LaunchBall : MonoBehaviour
         angleSet = true;
         time = 0;
         //Debug.Log("Coroutine Ended");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            AudioManager.instance.playHitGround();
+        }
     }
 }

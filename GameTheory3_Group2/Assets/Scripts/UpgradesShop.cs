@@ -18,10 +18,12 @@ public class UpgradesShop : MonoBehaviour
         pmScript.addedPoints = false;
         gameObject.transform.rotation = Quaternion.identity;
         gameObject.transform.position = startingPosition.position;
+        AudioManager.instance.playButtonClick();
     }
     
     public void Quit()
     {
+        AudioManager.instance.playButtonClick();
         Application.Quit();
     }
 
@@ -50,6 +52,7 @@ public class UpgradesShop : MonoBehaviour
     public int launchPowerCost;
     public void UpgradeLaunchPower()
     {
+        AudioManager.instance.playButtonClick();
         lbScript.maxForce *= 1.1f;
         pmScript.money -= launchPowerCost;
         launchPowerCost += launchPowerCost;
@@ -63,6 +66,7 @@ public class UpgradesShop : MonoBehaviour
     public int moneyMultiplierCost;
     public void UpgradeMoneyMultiplier()
     {
+        AudioManager.instance.playButtonClick();
         pmScript.moneyMultiplier += 0.05f;
         pmScript.money -= moneyMultiplierCost;
         moneyMultiplierCost += moneyMultiplierCost;
