@@ -44,7 +44,8 @@ public class PointsManager : MonoBehaviour
 
     public void UpdateMoneyDisplay()
     {
-        availableMoneyText.text = money.ToString();
+        availableMoneyText.text = System.Math.Round(money, 1).ToString();
+        upgradeScript.UpdateAllButtons();
     }
 
     void DisplayMoneyEarned()
@@ -64,8 +65,6 @@ public class PointsManager : MonoBehaviour
         totalMoney.text = System.Math.Round(moneyEarned, 1).ToString();
         //add the money earned to the current owned money
         money += moneyEarned;
-
         UpdateMoneyDisplay();
-        upgradeScript.UpdateAllButtons();
     }
 }
