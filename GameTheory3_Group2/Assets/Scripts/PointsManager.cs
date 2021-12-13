@@ -37,6 +37,7 @@ public class PointsManager : MonoBehaviour
 
         if(gameObject.GetComponent<Rigidbody2D>().IsSleeping() && addedPoints == false && lbScript.launched == true)
         {
+            AudioManager.instance.playSparkle();
             DisplayMoneyEarned();
         }
     }

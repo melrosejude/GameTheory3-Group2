@@ -4080,7 +4080,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.072
+  m_Volume: 0.045
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9394,6 +9394,7 @@ MonoBehaviour:
   canonFire: {fileID: 8300000, guid: aafda0c1f8c57dd4e843ad5c3490d887, type: 3}
   buttonClick: {fileID: 8300000, guid: 548c877e47913c146b4a84699dc29077, type: 3}
   ballHitGround: {fileID: 8300000, guid: 9f4e7a51d68b6c9418f094adaa58fe65, type: 3}
+  sparkleSound: {fileID: 8300000, guid: bab61422155030549bb1baddc41616a4, type: 3}
 --- !u!4 &1847627228
 Transform:
   m_ObjectHideFlags: 0

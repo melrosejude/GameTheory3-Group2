@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip canonFire;
     public AudioClip buttonClick;
     public AudioClip ballHitGround;
+    public AudioClip sparkleSound;
 
     private void Awake()
     {
@@ -41,5 +42,10 @@ public class AudioManager : MonoBehaviour
     public void playHitGround()
     {
         sfxSource.PlayOneShot(ballHitGround);
+    }
+
+    public void playSparkle()
+    {
+        sfxSource.PlayOneShot(sparkleSound);
     }
 }
