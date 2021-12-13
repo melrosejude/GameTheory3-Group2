@@ -33,7 +33,7 @@ public class PointsManager : MonoBehaviour
         }
 
         _distanceTraveled = transform.position.x - startPosition.position.x;
-        distanceTraveledText.text = "Distance: " + Mathf.RoundToInt(_distanceTraveled) + " m";
+        distanceTraveledText.text = Mathf.RoundToInt(_distanceTraveled) + " m";
 
         if(gameObject.GetComponent<Rigidbody2D>().IsSleeping() && addedPoints == false && lbScript.launched == true)
         {
@@ -44,7 +44,8 @@ public class PointsManager : MonoBehaviour
 
     public void UpdateMoneyDisplay()
     {
-        availableMoneyText.text = money.ToString();
+        availableMoneyText.text = System.Math.Round(money, 1).ToString();
+        upgradeScript.UpdateAllButtons();
     }
 
     void DisplayMoneyEarned()
@@ -66,6 +67,5 @@ public class PointsManager : MonoBehaviour
         money += moneyEarned;
 
         UpdateMoneyDisplay();
-        upgradeScript.UpdateAllButtons();
     }
 }
