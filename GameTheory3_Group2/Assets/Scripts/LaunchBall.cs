@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class LaunchBall : MonoBehaviour
 {
+    public Transform canon;
     public Image powerMeter;
     public Image angleMeter;
     public Rigidbody2D myRb;
@@ -37,6 +38,7 @@ public class LaunchBall : MonoBehaviour
     {
         if (Input.GetButtonDown("Space") && forceSet && angleSet && !launched)
         {
+            myRb.isKinematic = false;
             myRb.AddForce(angle * transform.right * launchForce, ForceMode2D.Impulse);
             AudioManager.instance.playCanonFire();
             launched = true;
@@ -68,6 +70,7 @@ public class LaunchBall : MonoBehaviour
             time += Time.deltaTime;
             launchAngle = Mathf.PingPong(time * 50, maxAngle);
             angleMeter.fillAmount = launchAngle / maxAngle;
+            canon.rotation = Quaternion.AngleAxis(launchAngle, transform.forward);
             if (Input.GetButtonDown("Space"))
             {
                 angle = Quaternion.AngleAxis(launchAngle, transform.forward);

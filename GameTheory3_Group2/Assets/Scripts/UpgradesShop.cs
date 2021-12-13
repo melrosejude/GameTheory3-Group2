@@ -15,6 +15,7 @@ public class UpgradesShop : MonoBehaviour
         lbScript.forceSet = false;
         lbScript.angleSet = false;
         lbScript.launched = false;
+        lbScript.myRb.isKinematic = true;
         pmScript.addedPoints = false;
         gameObject.transform.rotation = Quaternion.identity;
         gameObject.transform.position = startingPosition.position;
