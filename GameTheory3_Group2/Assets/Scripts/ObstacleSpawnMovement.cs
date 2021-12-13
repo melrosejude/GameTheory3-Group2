@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ObstacleSpawnMovement : MonoBehaviour
 {
+    public bool bouncyObject;
     public int force;
 
-    public bool bouncyObject;
+    public bool extraMoneyObject;
+    public int extraMoneyValue;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +29,8 @@ public class ObstacleSpawnMovement : MonoBehaviour
         {
             Debug.Log("Hitting the player");
 
-            if (bouncyObject)
-            {
-                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(1,1) * collision.GetComponent<UpgradesShop>().bounciness);
-            }
+            if (bouncyObject) BouncyObject(collision);
+            if (extraMoneyObject) ExtraMoneyObject(collision);
 
             Destroy(this.gameObject);
         }
@@ -42,9 +42,14 @@ public class ObstacleSpawnMovement : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void BouncyObject()
+    private void BouncyObject(Collider2D collision)
     {
+        collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * collision.GetComponent<UpgradesShop>().bounciness);
+    }
 
+    private void ExtraMoneyObject(Collider2D collision)
+    {
+        collision.GetComponent<PointsManager>().extraMoney += extraMoneyValue;
     }
 }
 

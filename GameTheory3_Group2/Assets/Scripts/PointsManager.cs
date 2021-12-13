@@ -9,6 +9,7 @@ public class PointsManager : MonoBehaviour
 {
     public float money;
     public float moneyEarned;
+    public float extraMoney;
     public float moneyMultiplier = 1;
 
     public GameObject finishLine;
@@ -18,6 +19,7 @@ public class PointsManager : MonoBehaviour
     public TextMeshProUGUI distanceTraveledText;
     public TextMeshProUGUI distanceTraveledMoneyEarnedText;
     public TextMeshProUGUI moneyMultiplierText;
+    public TextMeshProUGUI extraMoneyText;
     public TextMeshProUGUI totalMoney;
     public UpgradesShop upgradeScript;
     public LaunchBall lbScript;
@@ -62,11 +64,17 @@ public class PointsManager : MonoBehaviour
         moneyMultiplierText.text = moneyMultiplier.ToString();
         //multiply earned money by bonus
         moneyEarned *= moneyMultiplier;
+        //show bonus money
+        extraMoneyText.text = System.Math.Round(extraMoney, 1).ToString();
+        //add bonus money
+        moneyEarned += extraMoney;
         //show final money earned
         totalMoney.text = System.Math.Round(moneyEarned, 1).ToString();
         //add the money earned to the current owned money
         money += moneyEarned;
 
         UpdateMoneyDisplay();
+        moneyEarned = 0;
+        extraMoney = 0;
     }
 }

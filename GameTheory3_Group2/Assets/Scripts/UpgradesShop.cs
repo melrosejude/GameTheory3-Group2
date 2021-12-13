@@ -9,6 +9,7 @@ public class UpgradesShop : MonoBehaviour
     public Transform startingPosition;
     public LaunchBall lbScript;
     public PointsManager pmScript;
+    public GameObject bouncyObject;
 
     public float bounciness = 100f;
 
@@ -35,6 +36,7 @@ public class UpgradesShop : MonoBehaviour
         UpdateButton(launchPowerButton, launchPowerCostText, launchPowerCost);
         UpdateButton(moneyMultiplierButton, moneyMultiplierCostText, moneyMultiplierCost);
         UpdateButton(cookieBouncinessButton, cookieBouncinessCostText, cookieBouncinessCost);
+        UpdateButton(bouncyCookieIncreaseButton, bouncyCookieIncreaseCostText, bouncyCookieIncreaseCost);
     }
 
     private void UpdateButton(Button button, TextMeshProUGUI text, int cost)
@@ -90,5 +92,29 @@ public class UpgradesShop : MonoBehaviour
         cookieBouncinessCost += 100;
         UpdateButton(cookieBouncinessButton, cookieBouncinessCostText, cookieBouncinessCost);
         pmScript.UpdateMoneyDisplay();
+    }
+
+    //Upgrade Cokkie Bounciness
+    public Button bouncyCookieIncreaseButton;
+    public TextMeshProUGUI bouncyCookieIncreaseCostText;
+    public int bouncyCookieIncreaseCost;
+    public void UpgradeBouncyCookieIncrease()
+    {
+        TimeSpawn bo = bouncyObject.GetComponent<TimeSpawn>();
+        AudioManager.instance.playButtonClick();
+        if (bo.spawnTime > 0.1f)
+        {
+            bo.spawnTime -= 0.1f;
+            pmScript.money -= cookieBouncinessCost;
+            bouncyCookieIncreaseCost += 1000;
+            UpdateButton(bouncyCookieIncreaseButton, bouncyCookieIncreaseCostText, bouncyCookieIncreaseCost);
+            pmScript.UpdateMoneyDisplay();
+        }
+        else
+        {
+            bouncyCookieIncreaseButton.interactable = false;
+            bouncyCookieIncreaseCost = 0;
+            bouncyCookieIncreaseCostText.text = "";
+        }
     }
 }

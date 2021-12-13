@@ -11,7 +11,7 @@ public class TimeSpawn : MonoBehaviour
     private GameObject spawnee;
     public bool stopSpwaning=false;
     public float spawnTime;
-    public float spawnDeay;
+    public float spawnDelay;
     public bool sw=false;
     public List<GameObject> obstacles;
     
@@ -26,7 +26,7 @@ public class TimeSpawn : MonoBehaviour
     {
         if (player.gameObject.GetComponent<LaunchBall>().launched && !sw )
         {
-            InvokeRepeating("SpawnObject", spawnTime, spawnDeay);
+            InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
             sw = true;
         }
 
