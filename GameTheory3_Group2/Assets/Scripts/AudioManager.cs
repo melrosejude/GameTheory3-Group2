@@ -30,22 +30,22 @@ public class AudioManager : MonoBehaviour
     public void playCanonFire()
     {
         Debug.Log("Playing sound");
-        sfxSource.PlayOneShot(canonFire);
+        sfxSource.PlayOneShot(canonFire, 0.045f);
        
     }
 
     public void playButtonClick()
     {
-        sfxSource.PlayOneShot(buttonClick);
+        sfxSource.PlayOneShot(buttonClick, 0.2f);
     }
 
     public void playHitGround()
     {
-        sfxSource.PlayOneShot(ballHitGround);
+        sfxSource.PlayOneShot(ballHitGround, 0.25f);
     }
 
     public void playSparkle()
     {
-        sfxSource.PlayOneShot(sparkleSound);
+        sfxSource.PlayOneShot(sparkleSound, 0.5f);
     }
 }
