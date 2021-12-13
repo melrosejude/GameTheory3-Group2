@@ -35,14 +35,13 @@ public class TimeSpawn : MonoBehaviour
     public void SpawnObject()
     {
         spawnee = obstacles[Random.Range(0, obstacles.Count)];
-        Vector2 spawnPosition = new Vector2(transform.position.x + Random.Range(-10,10),transform.position.y);
-        Instantiate(spawnee, spawnPosition, transform.rotation);
+        Vector2 spawnPosition = new Vector2(transform.position.x + 20,transform.position.y + Random.Range(-50, 50));
+        Instantiate(spawnee, spawnPosition, Quaternion.identity);
        
         if (stopSpwaning)
         {
             CancelInvoke("SpawnObject");
         }
-
     }
 
     

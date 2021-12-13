@@ -5,6 +5,9 @@ using UnityEngine;
 public class ObstacleSpawnMovement : MonoBehaviour
 {
     public int force;
+
+    public bool bouncyObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,12 @@ public class ObstacleSpawnMovement : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Hitting the player");
+
+            if (bouncyObject)
+            {
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(1,1) * collision.GetComponent<UpgradesShop>().bounciness);
+            }
+
             Destroy(this.gameObject);
         }
     }
@@ -31,6 +40,10 @@ public class ObstacleSpawnMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
+    }
+
+    private void BouncyObject()
+    {
 
     }
 }

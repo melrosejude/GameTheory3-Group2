@@ -10,6 +10,8 @@ public class UpgradesShop : MonoBehaviour
     public LaunchBall lbScript;
     public PointsManager pmScript;
 
+    public float bounciness = 100f;
+
     public void Relaunch()
     {
         lbScript.forceSet = false;
@@ -32,6 +34,7 @@ public class UpgradesShop : MonoBehaviour
     {
         UpdateButton(launchPowerButton, launchPowerCostText, launchPowerCost);
         UpdateButton(moneyMultiplierButton, moneyMultiplierCostText, moneyMultiplierCost);
+        UpdateButton(cookieBouncinessButton, cookieBouncinessCostText, cookieBouncinessCost);
     }
 
     private void UpdateButton(Button button, TextMeshProUGUI text, int cost)
@@ -54,7 +57,7 @@ public class UpgradesShop : MonoBehaviour
     public void UpgradeLaunchPower()
     {
         AudioManager.instance.playButtonClick();
-        lbScript.maxForce *= 1.1f;
+        lbScript.maxForce += 10f;
         pmScript.money -= launchPowerCost;
         launchPowerCost += launchPowerCost;
         UpdateButton(launchPowerButton, launchPowerCostText, launchPowerCost);
@@ -72,6 +75,20 @@ public class UpgradesShop : MonoBehaviour
         pmScript.money -= moneyMultiplierCost;
         moneyMultiplierCost += moneyMultiplierCost;
         UpdateButton(moneyMultiplierButton, moneyMultiplierCostText, moneyMultiplierCost);
+        pmScript.UpdateMoneyDisplay();
+    }
+
+    //Upgrade Cokkie Bounciness
+    public Button cookieBouncinessButton;
+    public TextMeshProUGUI cookieBouncinessCostText;
+    public int cookieBouncinessCost;
+    public void UpgradeCookieBounciness()
+    {
+        AudioManager.instance.playButtonClick();
+        bounciness += 100f;
+        pmScript.money -= cookieBouncinessCost;
+        cookieBouncinessCost += 100;
+        UpdateButton(cookieBouncinessButton, cookieBouncinessCostText, cookieBouncinessCost);
         pmScript.UpdateMoneyDisplay();
     }
 }

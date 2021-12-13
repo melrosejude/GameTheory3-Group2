@@ -51,6 +51,7 @@ public class PointsManager : MonoBehaviour
     void DisplayMoneyEarned()
     {
         addedPoints = true;
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         moneyEarnedPanel.SetActive(true);
 
         //add earned money
